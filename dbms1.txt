@@ -1,0 +1,264 @@
+mysql> create database student;
+ERROR 1007 (HY000): Can't create database 'student'; database exists
+mysql> create database std;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use std;
+Database changed
+mysql> create table std(id int,name varchar(5));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'std(id int,name varchar(5))' at line 1
+mysql> create table stds(id int, name varchar(5));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> create table stds(id int, name varchar(50));
+ERROR 1050 (42S01): Table 'stds' already exists
+mysql> create table sts(id int, name varchar(50));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> insert into sts('1','robin seckeriyaa');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''1','robin seckeriyaa')' at line 1
+mysql> insert into sts values('1','robin seckeriyaa');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sts values('2','beegum hasrath mahal');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into sts values('3','aysha binth muhammed muneer');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('4','lami');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('5','norii');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('6','lubi');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('7','anju');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('8','malu');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('9','liya');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into sts values('10','riya');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from sts;
++------+-----------------------------+
+| id   | name                        |
++------+-----------------------------+
+|    1 | robin seckeriyaa            |
+|    2 | beegum hasrath mahal        |
+|    3 | aysha binth muhammed muneer |
+|    4 | lami                        |
+|    5 | norii                       |
+|    6 | lubi                        |
+|    7 | anju                        |
+|    8 | malu                        |
+|    9 | liya                        |
+|   10 | riya                        |
++------+-----------------------------+
+10 rows in set (0.00 sec)
+
+mysql> alter table sts add department(varchar(50));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(varchar(50))' at line 1
+mysql> alter table sts add department varchar(50);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table sts add age varchar(50);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table sts add id varchar(50);
+ERROR 1060 (42S21): Duplicate column name 'id'
+mysql> select * from sts;
++------+-----------------------------+------------+------+
+| id   | name                        | department | age  |
++------+-----------------------------+------------+------+
+|    1 | robin seckeriyaa            | NULL       | NULL |
+|    2 | beegum hasrath mahal        | NULL       | NULL |
+|    3 | aysha binth muhammed muneer | NULL       | NULL |
+|    4 | lami                        | NULL       | NULL |
+|    5 | norii                       | NULL       | NULL |
+|    6 | lubi                        | NULL       | NULL |
+|    7 | anju                        | NULL       | NULL |
+|    8 | malu                        | NULL       | NULL |
+|    9 | liya                        | NULL       | NULL |
+|   10 | riya                        | NULL       | NULL |
++------+-----------------------------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> update sts set age='21',department='mca' where id='1';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='22',department='bca' where id='2';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='23',department='cs' where id='3';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='24',department='civil' where id='4';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='25',department='mca' where id='5';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='26',department='bca' where id='6';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='27',department='bca' where id='7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='28',department='cs' where id='8';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='29',department='civil' where id='9';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update sts set age='29',department='civil' where id='10';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from sts;
++------+-----------------------------+------------+------+
+| id   | name                        | department | age  |
++------+-----------------------------+------------+------+
+|    1 | robin seckeriyaa            | mca        | 21   |
+|    2 | beegum hasrath mahal        | bca        | 22   |
+|    3 | aysha binth muhammed muneer | cs         | 23   |
+|    4 | lami                        | civil      | 24   |
+|    5 | norii                       | mca        | 25   |
+|    6 | lubi                        | bca        | 26   |
+|    7 | anju                        | bca        | 27   |
+|    8 | malu                        | cs         | 28   |
+|    9 | liya                        | civil      | 29   |
+|   10 | riya                        | civil      | 29   |
++------+-----------------------------+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> select * from sts where id='10';
++------+------+------------+------+
+| id   | name | department | age  |
++------+------+------------+------+
+|   10 | riya | civil      | 29   |
++------+------+------------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from sts where id<'5';
++------+-----------------------------+------------+------+
+| id   | name                        | department | age  |
++------+-----------------------------+------------+------+
+|    1 | robin seckeriyaa            | mca        | 21   |
+|    2 | beegum hasrath mahal        | bca        | 22   |
+|    3 | aysha binth muhammed muneer | cs         | 23   |
+|    4 | lami                        | civil      | 24   |
++------+-----------------------------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select * from sts where id<='5';
++------+-----------------------------+------------+------+
+| id   | name                        | department | age  |
++------+-----------------------------+------------+------+
+|    1 | robin seckeriyaa            | mca        | 21   |
+|    2 | beegum hasrath mahal        | bca        | 22   |
+|    3 | aysha binth muhammed muneer | cs         | 23   |
+|    4 | lami                        | civil      | 24   |
+|    5 | norii                       | mca        | 25   |
++------+-----------------------------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from sts where id>='5';
++------+-------+------------+------+
+| id   | name  | department | age  |
++------+-------+------------+------+
+|    5 | norii | mca        | 25   |
+|    6 | lubi  | bca        | 26   |
+|    7 | anju  | bca        | 27   |
+|    8 | malu  | cs         | 28   |
+|    9 | liya  | civil      | 29   |
+|   10 | riya  | civil      | 29   |
++------+-------+------------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from sts where id>'5';
++------+------+------------+------+
+| id   | name | department | age  |
++------+------+------------+------+
+|    6 | lubi | bca        | 26   |
+|    7 | anju | bca        | 27   |
+|    8 | malu | cs         | 28   |
+|    9 | liya | civil      | 29   |
+|   10 | riya | civil      | 29   |
++------+------+------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from sts where id between '7' and '10';
++------+------+------------+------+
+| id   | name | department | age  |
++------+------+------------+------+
+|    7 | anju | bca        | 27   |
+|    8 | malu | cs         | 28   |
+|    9 | liya | civil      | 29   |
+|   10 | riya | civil      | 29   |
++------+------+------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select name from sts where name like='l%';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '='l%'' at line 1
+mysql> select name from sts where name like 'l%';
++------+
+| name |
++------+
+| lami |
+| lubi |
+| liya |
++------+
+3 rows in set (0.00 sec)
+
+mysql> select name from sts where name like '_a%';
++------+
+| name |
++------+
+| lami |
+| malu |
++------+
+2 rows in set (0.00 sec)
+
+mysql> select name from sts where name like '____a%';
++-----------------------------+
+| name                        |
++-----------------------------+
+| aysha binth muhammed muneer |
++-----------------------------+
+1 row in set (0.00 sec)
+
+mysql> select name from sts where name like '%a%';
++-----------------------------+
+| name                        |
++-----------------------------+
+| robin seckeriyaa            |
+| beegum hasrath mahal        |
+| aysha binth muhammed muneer |
+| lami                        |
+| anju                        |
+| malu                        |
+| liya                        |
+| riya                        |
++-----------------------------+
+8 rows in set (0.00 sec)
+
+mysql>
